@@ -8,6 +8,9 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textSize="40dp"
+        android:layout_gravity="center"
+        android:text="0"
         android:id="@+id/slider_value"/>
     <com.anwesome.ui.bittoslider.BittoSliderView
         android:id="@+id/slider"
