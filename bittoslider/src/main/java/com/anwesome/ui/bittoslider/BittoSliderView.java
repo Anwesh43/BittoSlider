@@ -83,6 +83,17 @@ public class BittoSliderView extends View {
         canvas.drawRoundRect(new RectF(0,0,sx,AppConstants.SLIDER_HEIGHT),AppConstants.SLIDER_HEIGHT/2,AppConstants.SLIDER_HEIGHT/2,paint);
         canvas.drawCircle(sx+AppConstants.SLIDER_HEIGHT/4,AppConstants.SLIDER_HEIGHT/2,AppConstants.SLIDER_HEIGHT/2,paint);
         value = min+((sx*1.0f)/canvas.getWidth())*Math.abs(max-min);
+        if(isDown) {
+            try {
+                Thread.sleep(100);
+                if(onChangeListener!=null) {
+                    onChangeListener.onChange(value);
+                }
+            }
+            catch (Exception ex){
+
+            }
+        }
     }
     public boolean onTouchEvent(MotionEvent event) {
         switch (event.getAction()) {
@@ -102,9 +113,7 @@ public class BittoSliderView extends View {
                 }
                 break;
         }
-        if(onChangeListener!=null) {
-            onChangeListener.onChange(value);
-        }
+
         postInvalidate();
         return true;
     }
